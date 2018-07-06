@@ -45,10 +45,10 @@ func TestEc2InstanceProvisioning(t *testing.T) {
 }
 
 func TestEc2InstanceProvisioningWithRandomRegion(t *testing.T) {
-  t.Parallel()
-  CanonicalAccountId := "137112412989" //amazon Account id
-  approvedRegions := []string{"us-east-1","us-west-1","us-west-2"}
-  awsRegion := aws.GetRandomRegion(t, approvedRegions, nil)
+	t.Parallel()
+	CanonicalAccountId := "137112412989" //amazon Account id
+	approvedRegions := []string{"us-east-1","us-west-1","us-west-2"}
+	awsRegion := aws.GetRandomRegion(t, approvedRegions, nil)
   expectedName := fmt.Sprintf("terratest-aws-example-%s", random.UniqueId())
 	amiFilters := map[string][]string{
       "architecture": []string{"x86_64"},
