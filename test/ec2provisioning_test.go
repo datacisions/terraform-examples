@@ -14,8 +14,8 @@ func TestEc2InstanceProvisioning(t *testing.T) {
    t.Parallel()
   approvedRegions := []string{"us-east-1"}
   awsRegion := aws.GetRandomRegion(t, approvedRegions, nil)
-   expectedName := fmt.Sprintf("terratest-aws-example-%s", random.UniqueId())
-   terraformOptions := &terraform.Options{
+	expectedName := fmt.Sprintf("terratest-aws-example-%s", random.UniqueId())
+	terraformOptions := &terraform.Options{
       // The path to where our Terraform code is located
       TerraformDir: "../",
 
@@ -45,17 +45,17 @@ func TestEc2InstanceProvisioning(t *testing.T) {
 }
 
 func TestEc2InstanceProvisioningWithRandomRegion(t *testing.T) {
-   t.Parallel()
-   CanonicalAccountId := "137112412989" //amazon Account id
+  t.Parallel()
+  CanonicalAccountId := "137112412989" //amazon Account id
   approvedRegions := []string{"us-east-1","us-west-1","us-west-2"}
   awsRegion := aws.GetRandomRegion(t, approvedRegions, nil)
-   expectedName := fmt.Sprintf("terratest-aws-example-%s", random.UniqueId())
-   amiFilters := map[string][]string{
+  expectedName := fmt.Sprintf("terratest-aws-example-%s", random.UniqueId())
+	amiFilters := map[string][]string{
       "architecture": []string{"x86_64"},
       "virtualization-type": []string{"hvm"},
    }
-   amiId := aws.GetMostRecentAmiId(t, awsRegion, CanonicalAccountId, amiFilters)
-   terraformOptions := &terraform.Options{
+  amiId := aws.GetMostRecentAmiId(t, awsRegion, CanonicalAccountId, amiFilters)
+  terraformOptions := &terraform.Options{
       // The path to where our Terraform code is located
       TerraformDir: "../",
 
