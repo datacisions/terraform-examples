@@ -12,7 +12,7 @@ import (
 
 func TestEc2InstanceProvisioning(t *testing.T) {
    t.Parallel()
-  approvedRegions := []string{"us-east-1"}//,"eu-west-2","eu-west-3"}
+  approvedRegions := []string{"us-east-1"}
   awsRegion := aws.GetRandomRegion(t, approvedRegions, nil)
    expectedName := fmt.Sprintf("terratest-aws-example-%s", random.UniqueId())
    terraformOptions := &terraform.Options{
