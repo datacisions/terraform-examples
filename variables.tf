@@ -2,6 +2,10 @@
 # OPTIONAL PARAMETERS
 # These parameters have reasonable defaults.
 # ---------------------------------------------------------------------------------------------------------------------
+variable "region" {
+  description = "AWS region to deploy the instances"
+  default = "us-east-1"
+}
 
 variable "instance_name" {
   description = "The name tag to set for the EC2 Instance."

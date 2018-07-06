@@ -1,7 +1,7 @@
 # ---------------------------------------------------------------------------------------------------------------------
 # DEPLOY AN EC2 INSTANCE RUNNING UBUNTU
 provider "aws" {
-  region = "us-east-1"
+  region = "${var.region}"
   profile= "admin"
 
 }

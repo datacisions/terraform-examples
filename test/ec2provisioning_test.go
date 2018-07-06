@@ -23,6 +23,7 @@ func TestEc2InstanceProvisioning(t *testing.T) {
       Vars: map[string]interface{}{
          "instance_name": expectedName,
          "test_label": "yes",
+				 "region":awsRegion,
       },
 
       // Environment variables to set when running Terraform
@@ -64,6 +65,7 @@ func TestEc2InstanceProvisioningWithRandomRegion(t *testing.T) {
          "instance_name": expectedName,
          "test_label": "yes",
          "ami_id": amiId,
+				 "region":awsRegion,
       },
 
       // Environment variables to set when running Terraform
