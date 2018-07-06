@@ -35,14 +35,14 @@ func TestEc2InstanceProvisioning(t *testing.T) {
   defer terraform.Destroy(t, terraformOptions)
   // Run `terraform init` and `terraform apply`
   terraform.InitAndApply(t, terraformOptions)
-  instanceIdbyTF := terraform.Output(t, terraformOptions, "instance_id")
+	actualInstanceId := []string{terraform.Output(t, terraformOptions, "instance_id")}
 
   // let's check that the instance is actually there by looking for it with it's tag:
   tagName := "Name"
-  instanceIdbyTag := aws.GetEc2InstanceIdsByTag(t, awsRegion, tagName, expectedName)
+  exptectedInstanceId := aws.GetEc2InstanceIdsByTag(t, awsRegion, tagName, expectedName)
 
   // check it's the instance just created
-  assert.Equal(t, instanceIdbyTag, instanceIdbyTF)
+  assert.Equal(t, exptectedInstanceId, actualInstanceId)
 }
 
 func TestEc2InstanceProvisioningWithRandomRegion(t *testing.T) {
